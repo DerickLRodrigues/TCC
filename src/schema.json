@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CreditCardTransaction",
+  "type": "object",
+  "properties": {
+    "trans_num": { "type": "string" },
+    "cc_num": { "type": "number" },
+    "amt": { "type": "number" },
+    "merchant": { "type": "string" },
+    "trans_date_trans_time": { "type": "string" }
+  },
+  "required": ["trans_num", "cc_num", "amt", "merchant"]
+}
