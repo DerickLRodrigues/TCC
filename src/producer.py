@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import random
 from confluent_kafka import SerializingProducer
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.json_schema import JSONSerializer
@@ -44,30 +45,38 @@ def main():
     producer = SerializingProducer(producer_conf)
 
     print("A iniciar a leitura do dataset ...")
-    # Ler apenas as primeiras 10 linhas para o teste, pode ser comentado esse trecho
+    # Ler apenas as primeiras 15 linhas para o teste, pode ser comentado esse trecho
     try:
-        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=10)
+        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=15)
     except FileNotFoundError:
          print("Arquivo CSV não encontrado na pasta data/")
          return
+
+    campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
 
     for index, row in df.iterrows():
         # Montagem do payload extraindo os dados do CSV
         mensagem = {
             "trans_num": str(row['trans_num']),
             "cc_num": float(row['cc_num']),
-           "amt": float(row['amt']),    # podemos qualquer linha para forcar um erro
+            "amt": float(row['amt']),    # podemos comentar qualquer linha para forcar um erro
             "merchant": str(row['merchant']),
             "trans_date_trans_time": str(row['trans_date_trans_time'])
         }
 
         print(f"\nA processar transação ID: {mensagem['trans_num']}...")
 
+        # Injeção de aleatoriedade para simular o erro (30% de chance)
+        if random.random() < 0.30:
+            campo_removido = random.choice(campos_obrigatorios)
+            del mensagem[campo_removido]
+            print(f"[SIMULAÇÃO DE ERRO] O campo '{campo_removido}' foi removido de propósito!")
+
         try:
             # O Serializer analisa o 'value' contra o Schema Registry ANTES de ir para a rede
             producer.produce(
                 topic=topic,
-                key=mensagem['trans_num'], # o ID da transação como chave de partição
+                key=mensagem.get('trans_num', 'id_desconhecido'), # o ID da transação como chave de partição
                 value=mensagem,
                 on_delivery=delivery_report
             )
