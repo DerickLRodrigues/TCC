@@ -6,6 +6,14 @@ from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.json_schema import JSONSerializer
 from confluent_kafka.serialization import StringSerializer
 import time
+import logging
+
+logging.basicConfig(
+    filename='auditoria_governança.log',
+    filemode='a', 
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
 def delivery_report(err, msg):
     """ Callback de monitorização: chamado quando a mensagem é entregue ou falha """
@@ -86,7 +94,9 @@ def main():
 
         except Exception as e:
             # Aqui rola os bloqueios por motivo do schema registry (parte da governancia)
-            print(f"[BLOQUEIO DE Schema] O Schema Registry rejeitou a transação: {e}")
+            mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
+            print(f"Error: {mensagem_erro}") 
+            logging.error(mensagem_erro) # GRAVA NO DISCO PARA O AUDITOR
 
     # Garante que todas as mensagens em fila são enviadas antes de fechar o script
     producer.flush()
