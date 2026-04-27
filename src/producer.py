@@ -47,7 +47,7 @@ def main():
     print("A iniciar a leitura do dataset ...")
     # Ler apenas as primeiras 15 linhas para o teste, pode ser comentado esse trecho
     try:
-        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=15)
+        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=200)
     except FileNotFoundError:
          print("Arquivo CSV não encontrado na pasta data/")
          return
