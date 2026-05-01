@@ -20,6 +20,7 @@ Para garantir a reprodutibilidade do experimento, você precisará ter instalado
 Com o Docker Desktop aberto, abra o seu terminal na pasta raiz deste projeto e suba os contêineres do Kafka, Zookeeper e Schema Registry em segundo plano:
 ```bash
 docker-compose up -d
+```
 
 ### 2. Configuração do ambiente virtual
 Crie e ative um ambiente virtual para isolar as dependências:
