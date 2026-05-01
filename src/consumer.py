@@ -54,8 +54,8 @@ def main():
             chave = msg.key()
             transacao = msg.value()
 
-            print(f" [MENSAGEM RECEBIDA] Transação ID: {chave}")
-            print(f"   Valor: ${transacao['amt']} | Loja: {transacao['merchant']}")
+            print(f"[PROCESSADA] Transação ID: {chave}")
+            print(f" Valor: ${transacao['amt']} | Loja: {transacao['merchant']} | Cartão: {transacao['cc_num']}")
             print("-" * 50)
 
     except KeyboardInterrupt:

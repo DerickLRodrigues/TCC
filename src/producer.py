@@ -53,26 +53,45 @@ def main():
     producer = SerializingProducer(producer_conf)
 
     print("A iniciar a leitura do dataset ...")
-    # Ler apenas as primeiras 15 linhas para o teste, pode ser comentado esse trecho
+    # Ler apenas as primeiras 50 linhas para o teste, pode ser comentado esse trecho
     try:
-        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=200)
+        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=50)
     except FileNotFoundError:
          print("Arquivo CSV não encontrado na pasta data/")
          return
 
     campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
 
+    campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
+    
+    # Memória local para evitar transações duplicadas (Simulando uma cache/banco)
+    transacoes_processadas = set()
+
     for index, row in df.iterrows():
+        id_transacao = str(row['trans_num'])
+
+        print(f"\nA processar transação ID: {id_transacao}...")
+
+        # REGRA DE NEGÓCIO 1: BLOQUEIO DE DUPLICATAS
+        if id_transacao in transacoes_processadas:
+            print(f"[DEDUPLICAÇÃO] Transação {id_transacao} bloqueada. Já foi enviada anteriormente.")
+            continue
+        transacoes_processadas.add(id_transacao)
+
+        
+        # REGRA DE NEGÓCIO 2: CONFORMIDADE LGPD (Mascaramento Shift-Left)
+        # Pegamos o número bruto, removemos decimais, e substituímos tudo por '*' exceto os 4 últimos
+        cc_raw = str(int(row['cc_num'])) 
+        cc_mascarado = "*" * (len(cc_raw) - 4) + cc_raw[-4:]
+
         # Montagem do payload extraindo os dados do CSV
         mensagem = {
-            "trans_num": str(row['trans_num']),
-            "cc_num": float(row['cc_num']),
-            "amt": float(row['amt']),    # podemos comentar qualquer linha para forcar um erro
+            "trans_num": id_transacao,
+            "cc_num": cc_mascarado, # Enviando o dado já anonimizado
+            "amt": float(row['amt']),
             "merchant": str(row['merchant']),
             "trans_date_trans_time": str(row['trans_date_trans_time'])
         }
-
-        print(f"\nA processar transação ID: {mensagem['trans_num']}...")
 
         # Injeção de aleatoriedade para simular o erro (30% de chance)
         if random.random() < 0.30:
@@ -81,22 +100,20 @@ def main():
             print(f"[SIMULAÇÃO DE ERRO] O campo '{campo_removido}' foi removido de propósito!")
 
         try:
-            # O Serializer analisa o 'value' contra o Schema Registry ANTES de ir para a rede
+            # O Serializer analisa o 'value' contra o Schema Registry antes de ir para a rede
             producer.produce(
                 topic=topic,
-                key=mensagem.get('trans_num', 'id_desconhecido'), # o ID da transação como chave de partição
+                key=mensagem.get('trans_num', 'id_desconhecido'),
                 value=mensagem,
                 on_delivery=delivery_report
             )
-            # A função poll() força o Kafka a verificar e disparar os callbacks pendentes
             producer.poll(0)
-            time.sleep(1) # Pausa de 1 segundo para ver a execução no terminal, pode ser maior ou menor no final
+            time.sleep(1)
 
         except Exception as e:
-            # Aqui rola os bloqueios por motivo do schema registry (parte da governancia)
             mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
-            print(f"Error: {mensagem_erro}") 
-            logging.error(mensagem_erro) # GRAVA NO DISCO PARA O AUDITOR
+            print(f"Error: {mensagem_erro}")
+            logging.error(f"{mensagem_erro}") 
 
     # Garante que todas as mensagens em fila são enviadas antes de fechar o script
     producer.flush()
