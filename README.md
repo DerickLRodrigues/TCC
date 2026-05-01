@@ -24,16 +24,20 @@ docker-compose up -d
 
 ### 2. Configuração do ambiente virtual
 Crie e ative um ambiente virtual para isolar as dependências:
+```
 python -m venv venv
 Ativação no Windows: venv\Scripts\activate
+```
 
 ### 3. Instalação das dependências
 Com o ambiente virtual ativado, instale as bibliotecas necessárias
+```
 pip install pandas certifi httpx authlib jsonschema fastjsonschema
 pip install "confluent-kafka[schema-registry,json]"
+```
 
 ### 4. Execução dos microsserviços
 Para observar a governança em tempo real, execute primeiro o consumidor e depois o produtor.
 Abra dois terminais, ambos com o ambiente virtual ativado na pasta src/
-Terminal 1 – Consumidor: python consumer.py
-Terminal 2 – Produtor: python producer.py
+Terminal 1 – Consumidor: ``` python consumer.py ```
+Terminal 2 – Produtor: ``` python producer.py ```
