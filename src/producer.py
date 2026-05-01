@@ -8,11 +8,13 @@ from confluent_kafka.serialization import StringSerializer
 import time
 import logging
 
+
 logging.basicConfig(
-    filename='auditoria_governança.log',
+    filename='auditoria_governanca.log',
     filemode='a', 
     format='%(asctime)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    level=logging.INFO,
+    encoding='utf-8'
 )
 
 def delivery_report(err, msg):
@@ -53,21 +55,28 @@ def main():
     producer = SerializingProducer(producer_conf)
 
     print("A iniciar a leitura do dataset ...")
-    # Ler apenas as primeiras 50 linhas para o teste, pode ser comentado esse trecho
+    # Ler apenas as X linhas para o teste
     try:
-        df = pd.read_csv('../data/credit_card_transactions.csv', nrows=50)
+        df = pd.read_csv('../data/credit_card_transactions.csv')
     except FileNotFoundError:
          print("Arquivo CSV não encontrado na pasta data/")
          return
-
-    campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
 
     campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
     
     # Memória local para evitar transações duplicadas (Simulando uma cache/banco)
     transacoes_processadas = set()
 
+    
+    # VARIÁVEIS PARA COLETA DE MÉTRICAS DO TCC
+    tempo_inicio = time.time()
+    total_processado = 0
+    total_sucesso = 0
+    total_bloqueado = 0
+    total_duplicado = 0
+
     for index, row in df.iterrows():
+        total_processado += 1
         id_transacao = str(row['trans_num'])
 
         print(f"\nA processar transação ID: {id_transacao}...")
@@ -75,12 +84,12 @@ def main():
         # REGRA DE NEGÓCIO 1: BLOQUEIO DE DUPLICATAS
         if id_transacao in transacoes_processadas:
             print(f"[DEDUPLICAÇÃO] Transação {id_transacao} bloqueada. Já foi enviada anteriormente.")
+            total_duplicado += 1
             continue
-        transacoes_processadas.add(id_transacao)
-
         
-        # REGRA DE NEGÓCIO 2: CONFORMIDADE LGPD (Mascaramento Shift-Left)
-        # Pegamos o número bruto, removemos decimais, e substituímos tudo por '*' exceto os 4 últimos
+        transacoes_processadas.add(id_transacao)
+        
+        # REGRA DE NEGÓCIO 2: CONFORMIDADE LGPD (Mascaramento)
         cc_raw = str(int(row['cc_num'])) 
         cc_mascarado = "*" * (len(cc_raw) - 4) + cc_raw[-4:]
 
@@ -108,16 +117,41 @@ def main():
                 on_delivery=delivery_report
             )
             producer.poll(0)
-            time.sleep(1)
+            # Se a linha acima não falhar, significa que o Schema validou e passou!
+            total_sucesso += 1
+            # time.sleep(1) 
 
         except Exception as e:
             mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
             print(f"Error: {mensagem_erro}")
             logging.error(f"{mensagem_erro}") 
+            # Se deu exceção, é porque a governança bloqueou a transação
+            total_bloqueado += 1
 
     # Garante que todas as mensagens em fila são enviadas antes de fechar o script
     producer.flush()
-    print("\n Fluxo de ingestão concluído!")
+    
+
+    # CÁLCULO FINAL DAS MÉTRICAS E EXIBIÇÃO NO TERMINAL
+    tempo_fim = time.time()
+    duracao_segundos = tempo_fim - tempo_inicio
+    
+    # Cálculos matemáticos
+    taxa_rejeicao = (total_bloqueado / total_processado) * 100 if total_processado > 0 else 0
+    throughput = total_processado / duracao_segundos if duracao_segundos > 0 else 0
+
+    print("\n" + "="*50)
+    print("RELATÓRIO DE MÉTRICAS PARA O TCC")
+    print("="*50)
+    print(f"Total de Transações Lidas do CSV: {total_processado}")
+    print(f"Transações Válidas (Sucesso): {total_sucesso}")
+    print(f"Transações Barradas (Governança): {total_bloqueado}")
+    if total_duplicado > 0:
+        print(f"Transações Barradas (Duplicatas): {total_duplicado}")
+    print(f"Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%")
+    print(f"Tempo Total de Processamento: {duracao_segundos:.2f} segundos")
+    print(f"Throughput Geral: {throughput:.2f} transações por segundo")
+    print("="*50)
 
 if __name__ == '__main__':
     main()
