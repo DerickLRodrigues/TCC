@@ -1,0 +1,601 @@
+=== INÍCIO DO BENCHMARK DE GOVERNANÇA KAFKA ===
+
+==================================================
+EXECUÇÃO NÚMERO: 1 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 65
+Transações Barradas (Governança): 35
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 35.00%
+Tempo Acumulado: 1.51 segundos
+Throughput: 66.31 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 1 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 677
+Transações Barradas (Governança): 323
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 32.30%
+Tempo Acumulado: 1.61 segundos
+Throughput: 620.93 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 1 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7001
+Transações Barradas (Governança): 2999
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.99%
+Tempo Acumulado: 2.50 segundos
+Throughput: 3996.11 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 1 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70082
+Transações Barradas (Governança): 29918
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.92%
+Tempo Acumulado: 10.55 segundos
+Throughput: 9481.20 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 1 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 908000
+Transações Barradas (Governança): 388675
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.97%
+Tempo Acumulado: 117.54 segundos
+Throughput: 11031.97 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 2 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 70
+Transações Barradas (Governança): 30
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.00%
+Tempo Acumulado: 0.51 segundos
+Throughput: 196.71 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 2 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 726
+Transações Barradas (Governança): 274
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 27.40%
+Tempo Acumulado: 0.59 segundos
+Throughput: 1690.52 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 2 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7003
+Transações Barradas (Governança): 2997
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.97%
+Tempo Acumulado: 1.36 segundos
+Throughput: 7356.43 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 2 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70100
+Transações Barradas (Governança): 29900
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.90%
+Tempo Acumulado: 9.34 segundos
+Throughput: 10708.03 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 2 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 906861
+Transações Barradas (Governança): 389814
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.06%
+Tempo Acumulado: 114.33 segundos
+Throughput: 11341.33 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 3 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 68
+Transações Barradas (Governança): 32
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 32.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 181.46 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 3 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 679
+Transações Barradas (Governança): 321
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 32.10%
+Tempo Acumulado: 0.63 segundos
+Throughput: 1579.58 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 3 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 6924
+Transações Barradas (Governança): 3076
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.76%
+Tempo Acumulado: 1.44 segundos
+Throughput: 6949.63 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 3 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 69797
+Transações Barradas (Governança): 30203
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.20%
+Tempo Acumulado: 9.14 segundos
+Throughput: 10936.95 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 3 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 907705
+Transações Barradas (Governança): 388970
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.00%
+Tempo Acumulado: 113.56 segundos
+Throughput: 11417.97 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 4 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 71
+Transações Barradas (Governança): 29
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.00%
+Tempo Acumulado: 0.50 segundos
+Throughput: 201.47 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 4 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 730
+Transações Barradas (Governança): 270
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 27.00%
+Tempo Acumulado: 0.58 segundos
+Throughput: 1709.63 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 4 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7030
+Transações Barradas (Governança): 2970
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.70%
+Tempo Acumulado: 1.36 segundos
+Throughput: 7339.96 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 4 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 69976
+Transações Barradas (Governança): 30024
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.02%
+Tempo Acumulado: 9.18 segundos
+Throughput: 10890.09 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 4 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 907868
+Transações Barradas (Governança): 388807
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.98%
+Tempo Acumulado: 112.86 segundos
+Throughput: 11489.68 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 5 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 82
+Transações Barradas (Governança): 18
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 18.00%
+Tempo Acumulado: 0.51 segundos
+Throughput: 195.92 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 5 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 702
+Transações Barradas (Governança): 298
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.80%
+Tempo Acumulado: 0.59 segundos
+Throughput: 1706.13 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 5 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 6985
+Transações Barradas (Governança): 3015
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.15%
+Tempo Acumulado: 1.37 segundos
+Throughput: 7291.11 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 5 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70064
+Transações Barradas (Governança): 29936
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.94%
+Tempo Acumulado: 9.12 segundos
+Throughput: 10966.40 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 5 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 907759
+Transações Barradas (Governança): 388916
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.99%
+Tempo Acumulado: 113.76 segundos
+Throughput: 11397.98 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 6 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 70
+Transações Barradas (Governança): 30
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 189.74 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 6 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 721
+Transações Barradas (Governança): 279
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 27.90%
+Tempo Acumulado: 0.61 segundos
+Throughput: 1646.34 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 6 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7008
+Transações Barradas (Governança): 2992
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.92%
+Tempo Acumulado: 1.38 segundos
+Throughput: 7263.56 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 6 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70161
+Transações Barradas (Governança): 29839
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.84%
+Tempo Acumulado: 9.12 segundos
+Throughput: 10967.65 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 6 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 907472
+Transações Barradas (Governança): 389203
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.02%
+Tempo Acumulado: 112.77 segundos
+Throughput: 11498.76 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 7 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 70
+Transações Barradas (Governança): 30
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 190.71 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 7 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 704
+Transações Barradas (Governança): 296
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.60%
+Tempo Acumulado: 0.61 segundos
+Throughput: 1644.93 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 7 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7035
+Transações Barradas (Governança): 2965
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.65%
+Tempo Acumulado: 1.39 segundos
+Throughput: 7212.48 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 7 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 69658
+Transações Barradas (Governança): 30342
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.34%
+Tempo Acumulado: 9.30 segundos
+Throughput: 10754.35 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 7 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 906942
+Transações Barradas (Governança): 389733
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.06%
+Tempo Acumulado: 113.40 segundos
+Throughput: 11434.17 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 8 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 74
+Transações Barradas (Governança): 26
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 26.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 193.81 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 8 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 712
+Transações Barradas (Governança): 288
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 28.80%
+Tempo Acumulado: 0.59 segundos
+Throughput: 1682.09 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 8 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7009
+Transações Barradas (Governança): 2991
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.91%
+Tempo Acumulado: 1.36 segundos
+Throughput: 7355.77 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 8 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 69968
+Transações Barradas (Governança): 30032
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.03%
+Tempo Acumulado: 9.17 segundos
+Throughput: 10906.76 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 8 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 908383
+Transações Barradas (Governança): 388292
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.95%
+Tempo Acumulado: 111.97 segundos
+Throughput: 11580.56 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 9 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 67
+Transações Barradas (Governança): 33
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 33.00%
+Tempo Acumulado: 0.51 segundos
+Throughput: 195.41 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 9 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 701
+Transações Barradas (Governança): 299
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.90%
+Tempo Acumulado: 0.59 segundos
+Throughput: 1706.84 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 9 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 6990
+Transações Barradas (Governança): 3010
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 30.10%
+Tempo Acumulado: 1.38 segundos
+Throughput: 7270.87 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 9 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70049
+Transações Barradas (Governança): 29951
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.95%
+Tempo Acumulado: 9.18 segundos
+Throughput: 10895.47 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 9 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 908195
+Transações Barradas (Governança): 388480
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.96%
+Tempo Acumulado: 112.56 segundos
+Throughput: 11520.16 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 10 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Válidas (Sucesso): 72
+Transações Barradas (Governança): 28
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 28.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 191.18 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 10 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Válidas (Sucesso): 703
+Transações Barradas (Governança): 297
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.70%
+Tempo Acumulado: 0.61 segundos
+Throughput: 1648.46 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 10 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Válidas (Sucesso): 7079
+Transações Barradas (Governança): 2921
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.21%
+Tempo Acumulado: 1.40 segundos
+Throughput: 7154.91 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 10 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Válidas (Sucesso): 70025
+Transações Barradas (Governança): 29975
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.98%
+Tempo Acumulado: 9.13 segundos
+Throughput: 10948.32 transações por segundo
+==================================================
+
+==================================================
+EXECUÇÃO NÚMERO: 10 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Válidas (Sucesso): 907991
+Transações Barradas (Governança): 388684
+Transações Barradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 29.98%
+Tempo Acumulado: 112.68 segundos
+Throughput: 11507.76 transações por segundo
+==================================================

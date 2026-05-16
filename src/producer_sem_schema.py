@@ -31,7 +31,7 @@ def salvar_relatorio(arquivo_txt, rodada, marco, total, sucesso, bloqueado, dupl
         "==================================================",
         f"Total de Transações Lidas: {total}",
         f"Transações Enviadas (Sucesso): {sucesso}",
-        f"Transações Barradas (Governança): {bloqueado} <- (Deve ser 0 sem Schema)",
+        f"Transações Barradas (Governança): {bloqueado}",
         f"Transações Ignoradas (Duplicatas): {duplicado}",
         f"Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%",
         f"Tempo Acumulado: {duracao_segundos:.2f} segundos",

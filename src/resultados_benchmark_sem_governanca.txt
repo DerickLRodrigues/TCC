@@ -1,0 +1,601 @@
+=== INÍCIO DO BENCHMARK - CENÁRIO SEM GOVERNANÇA ===
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 1 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 191.61 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 1 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 1824.93 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 1 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.77 segundos
+Throughput: 13010.70 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 1 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.11 segundos
+Throughput: 32199.97 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 1 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 33.04 segundos
+Throughput: 39245.12 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 2 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 191.77 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 2 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.54 segundos
+Throughput: 1835.84 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 2 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.76 segundos
+Throughput: 13118.93 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 2 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.13 segundos
+Throughput: 31899.35 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 2 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.88 segundos
+Throughput: 39436.65 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 3 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.51 segundos
+Throughput: 195.82 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 3 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 1871.17 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 3 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.76 segundos
+Throughput: 13242.92 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 3 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 2.98 segundos
+Throughput: 33601.67 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 3 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.39 segundos
+Throughput: 40028.94 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 4 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 187.50 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 4 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.56 segundos
+Throughput: 1792.56 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 4 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.79 segundos
+Throughput: 12719.20 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 4 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.06 segundos
+Throughput: 32641.02 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 4 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.93 segundos
+Throughput: 39378.36 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 5 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 187.35 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 5 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.56 segundos
+Throughput: 1791.34 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 5 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.78 segundos
+Throughput: 12853.96 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 5 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.10 segundos
+Throughput: 32257.32 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 5 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.77 segundos
+Throughput: 39567.49 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 6 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.52 segundos
+Throughput: 190.89 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 6 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 1829.60 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 6 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.78 segundos
+Throughput: 12847.24 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 6 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.04 segundos
+Throughput: 32874.61 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 6 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 33.00 segundos
+Throughput: 39293.50 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 7 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 181.55 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 7 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.57 segundos
+Throughput: 1742.44 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 7 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.80 segundos
+Throughput: 12550.99 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 7 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.00 segundos
+Throughput: 33319.37 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 7 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.63 segundos
+Throughput: 39739.87 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 8 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 182.23 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 8 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.57 segundos
+Throughput: 1745.42 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 8 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.79 segundos
+Throughput: 12646.92 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 8 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.12 segundos
+Throughput: 32042.05 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 8 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 33.28 segundos
+Throughput: 38956.87 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 9 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 188.83 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 9 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.55 segundos
+Throughput: 1807.78 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 9 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.78 segundos
+Throughput: 12802.63 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 9 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.01 segundos
+Throughput: 33207.66 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 9 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.98 segundos
+Throughput: 39316.31 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 10 | MARCO: 100 LINHAS
+==================================================
+Total de Transações Lidas: 100
+Transações Enviadas (Sucesso): 100
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.51 segundos
+Throughput: 195.96 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 10 | MARCO: 1000 LINHAS
+==================================================
+Total de Transações Lidas: 1000
+Transações Enviadas (Sucesso): 1000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.53 segundos
+Throughput: 1873.57 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 10 | MARCO: 10000 LINHAS
+==================================================
+Total de Transações Lidas: 10000
+Transações Enviadas (Sucesso): 10000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 0.75 segundos
+Throughput: 13249.93 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 10 | MARCO: 100000 LINHAS
+==================================================
+Total de Transações Lidas: 100000
+Transações Enviadas (Sucesso): 100000
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 3.04 segundos
+Throughput: 32848.73 transações por segundo
+==================================================
+==================================================
+CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)
+EXECUÇÃO NÚMERO: 10 | MARCO: 1296675 LINHAS
+==================================================
+Total de Transações Lidas: 1296675
+Transações Enviadas (Sucesso): 1296675
+Transações Barradas (Governança): 0
+Transações Ignoradas (Duplicatas): 0
+Taxa de Rejeição de Anomalias: 0.00%
+Tempo Acumulado: 32.60 segundos
+Throughput: 39770.36 transações por segundo
+==================================================
