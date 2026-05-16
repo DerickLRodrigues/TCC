@@ -8,7 +8,6 @@ from confluent_kafka.serialization import StringSerializer
 import time
 import logging
 
-
 logging.basicConfig(
     filename='auditoria_governanca.log',
     filemode='a', 
@@ -22,7 +21,26 @@ def delivery_report(err, msg):
     if err is not None:
         print(f" Não foi possível entregar: {err}")
     else:
-        print(f"Transação validada e entregue no tópico '{msg.topic()}' [Partição: {msg.partition()}]")
+        pass # Removido o print por linha para não inundar o terminal em execuções longas
+
+def exibir_relatorio(marco, total, sucesso, bloqueado, duplicado, tempo_inicio):
+    """ Função auxiliar para calcular e exibir as métricas de forma limpa """
+    tempo_atual = time.time()
+    duracao_segundos = tempo_atual - tempo_inicio
+    taxa_rejeicao = (bloqueado / total) * 100 if total > 0 else 0
+    throughput = total / duracao_segundos if duracao_segundos > 0 else 0
+
+    print("\n" + "="*50)
+    print(f"RELATÓRIO PARCIAL: MARCO DE {marco} LINHAS")
+    print("="*50)
+    print(f"Total de Transações Lidas do CSV: {total}")
+    print(f"Transações Válidas (Sucesso): {sucesso}")
+    print(f"Transações Barradas (Governança): {bloqueado}")
+    print(f"Transações Barradas (Duplicatas): {duplicado}")
+    print(f"Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%")
+    print(f"Tempo Acumulado de Processamento: {duracao_segundos:.2f} segundos")
+    print(f"Throughput Geral Até Aqui: {throughput:.2f} transações por segundo")
+    print("="*50 + "\n")
 
 def main():
     topic = "transacoes_financeiras"
@@ -32,7 +50,7 @@ def main():
         with open('schema.json', 'r') as f:
             schema_str = f.read()
     except FileNotFoundError:
-        print("Erro: Arquivo schema.json não encontrado na pasta src/")
+        print("Erro: Arquivo schema.json não encontrado.")
         return
 
     # 2. Configurar o Cliente do Schema Registry
@@ -43,7 +61,7 @@ def main():
     json_serializer = JSONSerializer(
         schema_str,
         schema_registry_client,
-        to_dict=lambda obj, ctx: obj  # A mensagem é um dicionário 
+        to_dict=lambda obj, ctx: obj 
     )
 
     # 4. Configurar o Produtor Kafka
@@ -54,21 +72,20 @@ def main():
     }
     producer = SerializingProducer(producer_conf)
 
-    print("A iniciar a leitura do dataset ...")
-    # Ler apenas as X linhas para o teste
+    print("A iniciar a leitura do dataset completo...")
     try:
+        # Lendo o arquivo completo (sem restrição de nrows)
         df = pd.read_csv('../data/credit_card_transactions.csv')
     except FileNotFoundError:
          print("Arquivo CSV não encontrado na pasta data/")
          return
 
     campos_obrigatorios = ["trans_num", "cc_num", "amt", "merchant"]
-    
-    # Memória local para evitar transações duplicadas (Simulando uma cache/banco)
     transacoes_processadas = set()
 
+    # DEFINIÇÃO DOS MARCOS DE COLETA DO TCC
+    marcos_coleta = [100, 1000, 10000, 100000, 1296675]
     
-    # VARIÁVEIS PARA COLETA DE MÉTRICAS DO TCC
     tempo_inicio = time.time()
     total_processado = 0
     total_sucesso = 0
@@ -79,79 +96,55 @@ def main():
         total_processado += 1
         id_transacao = str(row['trans_num'])
 
-        print(f"\nA processar transação ID: {id_transacao}...")
-
         # REGRA DE NEGÓCIO 1: BLOQUEIO DE DUPLICATAS
         if id_transacao in transacoes_processadas:
-            print(f"[DEDUPLICAÇÃO] Transação {id_transacao} bloqueada. Já foi enviada anteriormente.")
             total_duplicado += 1
-            continue
-        
-        transacoes_processadas.add(id_transacao)
-        
-        # REGRA DE NEGÓCIO 2: CONFORMIDADE LGPD (Mascaramento)
-        cc_raw = str(int(row['cc_num'])) 
-        cc_mascarado = "*" * (len(cc_raw) - 4) + cc_raw[-4:]
+        else:
+            transacoes_processadas.add(id_transacao)
+            
+            # REGRA DE NEGÓCIO 2: CONFORMIDADE LGPD (Mascaramento)
+            cc_raw = str(int(row['cc_num'])) 
+            cc_mascarado = "*" * (len(cc_raw) - 4) + cc_raw[-4:]
 
-        # Montagem do payload extraindo os dados do CSV
-        mensagem = {
-            "trans_num": id_transacao,
-            "cc_num": cc_mascarado, # Enviando o dado já anonimizado
-            "amt": float(row['amt']),
-            "merchant": str(row['merchant']),
-            "trans_date_trans_time": str(row['trans_date_trans_time'])
-        }
+            # Montagem do payload
+            mensagem = {
+                "trans_num": id_transacao,
+                "cc_num": cc_mascarado,
+                "amt": float(row['amt']),
+                "merchant": str(row['merchant']),
+                "trans_date_trans_time": str(row['trans_date_trans_time'])
+            }
 
-        # Injeção de aleatoriedade para simular o erro (30% de chance)
-        if random.random() < 0.30:
-            campo_removido = random.choice(campos_obrigatorios)
-            del mensagem[campo_removido]
-            print(f"[SIMULAÇÃO DE ERRO] O campo '{campo_removido}' foi removido de propósito!")
+            # Injeção de aleatoriedade para simular o erro (30% de chance)
+            if random.random() < 0.30:
+                campo_removido = random.choice(campos_obrigatorios)
+                del mensagem[campo_removido]
 
-        try:
-            # O Serializer analisa o 'value' contra o Schema Registry antes de ir para a rede
-            producer.produce(
-                topic=topic,
-                key=mensagem.get('trans_num', 'id_desconhecido'),
-                value=mensagem,
-                on_delivery=delivery_report
-            )
-            producer.poll(0)
-            # Se a linha acima não falhar, significa que o Schema validou e passou!
-            total_sucesso += 1
-            # time.sleep(1) 
+            try:
+                producer.produce(
+                    topic=topic,
+                    key=mensagem.get('trans_num', 'id_desconhecido'),
+                    value=mensagem,
+                    on_delivery=delivery_report
+                )
+                producer.poll(0)
+                total_sucesso += 1
 
-        except Exception as e:
-            mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
-            print(f"Error: {mensagem_erro}")
-            logging.error(f"{mensagem_erro}") 
-            # Se deu exceção, é porque a governança bloqueou a transação
-            total_bloqueado += 1
+            except Exception as e:
+                mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
+                logging.error(f"{mensagem_erro}") 
+                total_bloqueado += 1
 
-    # Garante que todas as mensagens em fila são enviadas antes de fechar o script
+        # VERIFICAÇÃO AUTOMÁTICA DOS MARCOS
+        if total_processado in marcos_coleta:
+            # Força o envio de mensagens pendentes na fila para garantir precisão nas métricas de tempo/vazão
+            producer.flush() 
+            exibir_relatorio(total_processado, total_processado, total_sucesso, total_bloqueado, total_duplicado, tempo_inicio)
+
+    # Garantia final caso o número exato de linhas do arquivo varie ligeiramente do esperado
     producer.flush()
-    
-
-    # CÁLCULO FINAL DAS MÉTRICAS E EXIBIÇÃO NO TERMINAL
-    tempo_fim = time.time()
-    duracao_segundos = tempo_fim - tempo_inicio
-    
-    # Cálculos matemáticos
-    taxa_rejeicao = (total_bloqueado / total_processado) * 100 if total_processado > 0 else 0
-    throughput = total_processado / duracao_segundos if duracao_segundos > 0 else 0
-
-    print("\n" + "="*50)
-    print("RELATÓRIO DE MÉTRICAS PARA O TCC")
-    print("="*50)
-    print(f"Total de Transações Lidas do CSV: {total_processado}")
-    print(f"Transações Válidas (Sucesso): {total_sucesso}")
-    print(f"Transações Barradas (Governança): {total_bloqueado}")
-    if total_duplicado > 0:
-        print(f"Transações Barradas (Duplicatas): {total_duplicado}")
-    print(f"Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%")
-    print(f"Tempo Total de Processamento: {duracao_segundos:.2f} segundos")
-    print(f"Throughput Geral: {throughput:.2f} transações por segundo")
-    print("="*50)
+    if total_processado not in marcos_coleta:
+        exibir_relatorio("FINAL (Fim do Arquivo)", total_processado, total_sucesso, total_bloqueado, total_duplicado, tempo_inicio)
 
 if __name__ == '__main__':
     main()
