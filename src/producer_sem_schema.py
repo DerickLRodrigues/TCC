@@ -1,15 +1,12 @@
 import pandas as pd
 import json
 import random
-from confluent_kafka import SerializingProducer
-from confluent_kafka.schema_registry import SchemaRegistryClient
-from confluent_kafka.schema_registry.json_schema import JSONSerializer
-from confluent_kafka.serialization import StringSerializer
+from confluent_kafka import Producer
 import time
 import logging
 
 logging.basicConfig(
-    filename='auditoria_governanca.log',
+    filename='auditoria_sem_governanca.log',
     filemode='a', 
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO,
@@ -21,55 +18,45 @@ def delivery_report(err, msg):
         pass 
 
 def salvar_relatorio(arquivo_txt, rodada, marco, total, sucesso, bloqueado, duplicado, tempo_inicio):
-    """ Calcula as métricas e salva diretamente no arquivo de texto usando triple quotes """
+    """ Calcula as métricas do cenário SEM GOVERNANÇA e grava no TXT """
     tempo_atual = time.time()
     duracao_segundos = tempo_atual - tempo_inicio
     taxa_rejeicao = (bloqueado / total) * 100 if total > 0 else 0
     throughput = total / duracao_segundos if duracao_segundos > 0 else 0
 
-    # Usando f-string com triplas aspas para evitar bugs de parsing do Python
-    texto_relatorio = f"""
-==================================================
-EXECUÇÃO NÚMERO: {rodada} | MARCO: {marco} LINHAS
-==================================================
-Total de Transações Lidas: {total}
-Transações Válidas (Sucesso): {sucesso}
-Transações Barradas (Governança): {bloqueado}
-Transações Barradas (Duplicatas): {duplicado}
-Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%
-Tempo Acumulado: {duracao_segundos:.2f} segundos
-Throughput: {throughput:.2f} transações por segundo
-==================================================
-"""
+    linhas_relatorio = [
+        "==================================================",
+        f"CENÁRIO: SEM GOVERNANÇA (SEM SCHEMA_REGISTRY)",
+        f"EXECUÇÃO NÚMERO: {rodada} | MARCO: {marco} LINHAS",
+        "==================================================",
+        f"Total de Transações Lidas: {total}",
+        f"Transações Enviadas (Sucesso): {sucesso}",
+        f"Transações Barradas (Governança): {bloqueado} <- (Deve ser 0 sem Schema)",
+        f"Transações Ignoradas (Duplicatas): {duplicado}",
+        f"Taxa de Rejeição de Anomalias: {taxa_rejeicao:.2f}%",
+        f"Tempo Acumulado: {duracao_segundos:.2f} segundos",
+        f"Throughput: {throughput:.2f} transações por segundo",
+        "==================================================\n"
+    ]
+    
+    conteudo_final = "\n".join(linhas_relatorio)
     
     with open(arquivo_txt, 'a', encoding='utf-8') as f:
-        f.write(texto_relatorio)
+        f.write(conteudo_final)
 
 def main():
     topic = "transacoes_financeiras"
-    arquivo_resultados = "resultados_benchmark.txt"
+    arquivo_resultados = "resultados_benchmark_sem_governanca.txt"
 
-    # Limpa ou cria o arquivo de resultados antes de começar as rodadas
+    # Inicializa o arquivo de texto limpo
     with open(arquivo_resultados, 'w', encoding='utf-8') as f:
-        f.write("=== INÍCIO DO BENCHMARK DE GOVERNANÇA KAFKA ===\n")
+        f.write("=== INÍCIO DO BENCHMARK - CENÁRIO SEM GOVERNANÇA ===\n")
 
-    try:
-        with open('schema.json', 'r') as f:
-            schema_str = f.read()
-    except FileNotFoundError:
-        print("Erro: Arquivo schema.json não encontrado.")
-        return
-
-    schema_registry_conf = {'url': 'http://localhost:8081'}
-    schema_registry_client = SchemaRegistryClient(schema_registry_conf)
-    json_serializer = JSONSerializer(schema_str, schema_registry_client, to_dict=lambda obj, ctx: obj)
-
+    # Configuração do Producer Raiz (Sem serializadores complexos)
     producer_conf = {
-        'bootstrap.servers': 'localhost:9092',
-        'key.serializer': StringSerializer('utf_8'),
-        'value.serializer': json_serializer
+        'bootstrap.servers': 'localhost:9092'
     }
-    producer = SerializingProducer(producer_conf)
+    producer = Producer(producer_conf)
 
     print("Carregando o dataset completo na memória (aguarde)...")
     try:
@@ -82,7 +69,7 @@ def main():
     marcos_coleta = [100, 1000, 10000, 100000, 1296675]
     
     total_rodadas = 10
-    print(f"Dataset carregado. Iniciando as {total_rodadas} rodadas de testes...")
+    print(f"Dataset carregado. Iniciando as {total_rodadas} rodadas SEM GOVERNANÇA...")
 
     for rodada in range(1, total_rodadas + 1):
         print(f" -> Executando rodada {rodada}/{total_rodadas}...")
@@ -98,11 +85,13 @@ def main():
             total_processado += 1
             id_transacao = str(row['trans_num'])
 
+            # REGRA 1: DEDUPLICAÇÃO (Mantida para o teste ser justo)
             if id_transacao in transacoes_processadas:
                 total_duplicado += 1
             else:
                 transacoes_processadas.add(id_transacao)
                 
+                # REGRA 2: MASCARAMENTO LGPD (Mantido para o teste ser justo)
                 cc_raw = str(int(row['cc_num'])) 
                 cc_mascarado = "*" * (len(cc_raw) - 4) + cc_raw[-4:]
 
@@ -114,23 +103,27 @@ def main():
                     "trans_date_trans_time": str(row['trans_date_trans_time'])
                 }
 
+                # Simulação de quebra de contrato (30% de chance)
                 if random.random() < 0.30:
                     campo_removido = random.choice(campos_obrigatorios)
                     del mensagem[campo_removido]
 
                 try:
+                    # Serialização manual para JSON string pura antes de injetar na rede
+                    payload_bytes = json.dumps(mensagem).encode('utf-8')
+                    
                     producer.produce(
                         topic=topic,
                         key=mensagem.get('trans_num', 'id_desconhecido'),
-                        value=mensagem,
+                        value=payload_bytes,
                         on_delivery=delivery_report
                     )
                     producer.poll(0)
                     total_sucesso += 1
 
                 except Exception as e:
-                    mensagem_erro = f"[BLOQUEIO] Transação {mensagem.get('trans_num', 'N/A')} rejeitada. Motivo: {e}"
-                    logging.error(f"{mensagem_erro}") 
+                    # Sem o Schema Registry, isso aqui só vai disparar se o broker cair ou estourar a memória
+                    logging.error(f"[ERRO REDE/BROKER]: {e}") 
                     total_bloqueado += 1
 
             if total_processado in marcos_coleta:
@@ -141,7 +134,7 @@ def main():
         if total_processado not in marcos_coleta:
             salvar_relatorio(arquivo_resultados, rodada, "FINAL", total_processado, total_sucesso, total_bloqueado, total_duplicado, tempo_inicio)
 
-    print(f"\n[SUCESSO] Todas as {total_rodadas} execuções foram finalizadas com formato corrigido!")
+    print(f"\n[SUCESSO] Benchmark sem governança finalizado! Resultados salvos em '{arquivo_resultados}'")
 
 if __name__ == '__main__':
     main()
