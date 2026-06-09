@@ -108,6 +108,7 @@ TCC/
 │   ├── producer.py                        # Cenário A: produtor COM validação (Schema Registry)
 │   ├── producer_sem_schema.py             # Cenário B: produtor SEM validação (controle)
 │   ├── consumer.py                        # consumidor do tópico transacoes_financeiras
+│   ├── demo_validacao_regras.py           # demonstra cada regra do contrato isoladamente
 │   ├── schema.json                        # contrato de dados (JSON Schema Draft-07)
 │   ├── resultados_benchmark.txt           # métricas coletadas — Cenário A
 │   └── resultados_benchmark_sem_governanca.txt  # métricas coletadas — Cenário B
@@ -204,6 +205,39 @@ regras de governança. Toda transação enviada no Cenário A é validada campo 
 Todos os cinco campos são **obrigatórios** (`required`). A escolha do JSON Schema (em vez de um
 formato binário como Avro) foi deliberada: ele permite incorporar validações semânticas e regras
 de negócio — como o *regex* de mascaramento da LGPD — diretamente no contrato.
+
+### Demonstração das regras de validação
+
+O benchmark principal (`producer.py`) injeta apenas **um** tipo de anomalia em escala: a ausência
+de campo obrigatório. As demais regras do contrato (máscara do cartão, limites de valor, formato
+de data, tamanho mínimo de texto) não são exercitadas ali, pois isso exigiria corromper a base de
+dados real.
+
+Para demonstrar que **todas** as regras funcionam, o script
+[`src/demo_validacao_regras.py`](src/demo_validacao_regras.py) envia um conjunto pequeno de
+mensagens **sintéticas** (não lê o CSV) pela **mesma** barreira de validação do `producer.py`
+— `SerializingProducer` + Schema Registry. Cada mensagem quebra exatamente uma regra e é
+rejeitada, com o motivo gravado em `auditoria_demo.log`. Também demonstra a deduplicação por
+`trans_num`.
+
+Com a stack Docker no ar, execute de dentro da pasta `src/`:
+
+```bash
+python demo_validacao_regras.py
+```
+
+Saída esperada (ilustrativa):
+
+```
+[ 2] Cartão SEM máscara (viola regex LGPD do cc_num)
+     Esperado: BLOQUEADA | Resultado: BLOQUEADA [OK]
+     Motivo: '1234567890123456' does not match '^\*+[0-9]{4}$'
+[ 3] Valor negativo (viola amt exclusiveMinimum 0)
+     Esperado: BLOQUEADA | Resultado: BLOQUEADA [OK]
+     Motivo: -50.0 is less than or equal to the minimum of 0
+...
+ RESUMO: 8/8 casos com o comportamento esperado.
+```
 
 ---
 
