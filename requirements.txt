@@ -1,0 +1,10 @@
+# Dependências da Prova de Conceito (PoC)
+# Instalação: pip install -r requirements.txt
+
+pandas
+confluent-kafka[schema-registry,json]
+jsonschema
+fastjsonschema
+httpx
+authlib
+certifi

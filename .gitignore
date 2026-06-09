@@ -1,1 +1,10 @@
+# Base de dados (baixar do Kaggle — ver data/README.md)
 data/credit_card_transactions.csv
+
+# Ambiente virtual Python
+venv/
+.venv/
+
+# Caches Python
+__pycache__/
+*.pyc

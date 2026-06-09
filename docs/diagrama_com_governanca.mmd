@@ -1,0 +1,24 @@
+%% Cenário A — Arquitetura COM Governança Preventiva na Origem
+%% Fonte do diagrama. Renderize com: npx -y @mermaid-js/mermaid-cli -i diagrama_com_governanca.mmd -o diagrama_com_governanca.png
+flowchart LR
+    CSV[("Fonte de Dados<br/>CSV Kaggle<br/>1.296.675 transações")]
+    PROD["Producer — producer.py<br/>Mascaramento LGPD do cc_num<br/>Deduplicação por trans_num<br/>Injeção de 30% de anomalias"]
+    SR{"Schema Registry<br/>Contrato JSON Draft-07<br/>Validação síncrona na origem"}
+    KAFKA[["Kafka Broker<br/>tópico: transacoes_financeiras"]]
+    CONS["Consumer — consumer.py<br/>Lê apenas dados válidos"]
+    AUD[/"Trilha de Auditoria<br/>auditoria_governanca.log"/]
+
+    CSV --> PROD
+    PROD -->|payload| SR
+    SR -->|"válido"| KAFKA
+    SR -->|"inválido — bloqueio"| AUD
+    KAFKA --> CONS
+
+    classDef src fill:#e3f2fd,stroke:#1565c0,color:#0d47a1;
+    classDef gov fill:#fff3e0,stroke:#e65100,color:#e65100,stroke-width:2px;
+    classDef ok fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;
+    classDef block fill:#ffebee,stroke:#c62828,color:#b71c1c;
+    class CSV src;
+    class SR gov;
+    class KAFKA,CONS ok;
+    class AUD block;

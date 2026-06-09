@@ -1,0 +1,16 @@
+%% Cenário B — Arquitetura SEM Governança (cenário de controle)
+%% Fonte do diagrama. Renderize com: npx -y @mermaid-js/mermaid-cli -i diagrama_sem_governanca.mmd -o diagrama_sem_governanca.png
+flowchart LR
+    CSV[("Fonte de Dados<br/>CSV Kaggle<br/>1.296.675 transações")]
+    PROD["Producer — producer_sem_schema.py<br/>Serialização JSON pura<br/>SEM validação de contrato"]
+    KAFKA[["Kafka Broker<br/>tópico: transacoes_financeiras"]]
+    CONS["Consumer<br/>Recebe dados corrompidos<br/>e inconsistentes"]
+
+    CSV --> PROD
+    PROD -->|"tudo é aceito (0% de rejeição)"| KAFKA
+    KAFKA -->|"dados corrompidos trafegam"| CONS
+
+    classDef src fill:#e3f2fd,stroke:#1565c0,color:#0d47a1;
+    classDef warn fill:#ffebee,stroke:#c62828,color:#b71c1c,stroke-width:2px;
+    class CSV src;
+    class PROD,KAFKA,CONS warn;
